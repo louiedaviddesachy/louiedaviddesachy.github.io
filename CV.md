@@ -12,7 +12,7 @@ nav-menu: true
 <section id="one">
 	<div class="inner">
 		<header class="major">
-			<h1>CV</h1>
+			<h1>Curiculum</h1>
 		</header>
 
 <ul class="actions fit">
@@ -20,9 +20,10 @@ nav-menu: true
 </ul>
 
 <dl>
-	<dt>Phd Student -- November 2025 -- UMR HeKA (Inria/Université Paris-Cité)</dt>d
+	<dt>Phd Student -- November 2025 -- UMR HeKA (Inria/Université Paris-Cité)</dt>
 
 	<dt>Visiting scholar -- August 2023/July 2024 -- Weiss Lab UCSF </dt>
+	
 	<dd>
 		<p>Under the supervision of Pr Lauren Weiss, I took part in a study around the impact of common genetic factors on the occurence of ASD (Autism Spectrum Disorder). More especially, we leveraged Genome Wide analysis tools to estimate the difference in heritability between males and females considering only common genetic factors.
 	This work resulted in presentation of posters in two main scientific seminars : The Simon Fundation ARI Sex Differences Collaboration Annual meeting, and the Bay Area Autism Consortium Annual Research Symposium.</p>
