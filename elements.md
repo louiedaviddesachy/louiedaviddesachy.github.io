@@ -12,7 +12,7 @@ nav-menu: false
 <section id="one">
 	<div class="inner">
 		<header class="major">
-			<h1>CV</h1>
+			<h1>Elements</h1>
 		</header>
 
 <!-- Content -->
