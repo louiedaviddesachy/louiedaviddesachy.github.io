@@ -19,31 +19,34 @@ nav-menu: true
 	<li><span class="button special fit">Professional Experience</span></li>
 </ul>
 
-Phd Student -- November 2025 -- UMR HeKA (Inria/Université Paris-Cité)
+<dl>
+	<dt>Phd Student -- November 2025 -- UMR HeKA (Inria/Université Paris-Cité)</dt>d
 
-Visiting scholar -- August 2023/July 2024 -- Weiss Lab UCSF
-
-Under the supervision of Pr Lauren Weiss, I took part in a study around the impact of common genetic factors on the occurence of ASD (Autism Spectrum Disorder). More especially, we leveraged Genome Wide analysis tools to estimate the difference in heritability between males and females considering only common genetic factors.
-
-This work resulted in presentation of posters in two main scientific seminars : The Simon Fundation ARI Sex Differences Collaboration Annual meeting, and the Bay Area Autism Consortium Annual Research Symposium.
-
-Research Intern -- April 2023/July 2023 -- Servier International Research Institute
-
-With the help of Antoine Bichat (Senior Data Scientist), I developped a pipeline comparing several statistical analysis methods, in order to identify biomarkers of response to a treatment.
-
-
+	<dt>Visiting scholar -- August 2023/July 2024 -- Weiss Lab UCSF </dt>
+	<dd>
+		<p>Under the supervision of Pr Lauren Weiss, I took part in a study around the impact of common genetic factors on the occurence of ASD (Autism Spectrum Disorder). More especially, we leveraged Genome Wide analysis tools to estimate the difference in heritability between males and females considering only common genetic factors.
+	This work resulted in presentation of posters in two main scientific seminars : The Simon Fundation ARI Sex Differences Collaboration Annual meeting, and the Bay Area Autism Consortium Annual Research Symposium.</p>
+	</dd>
+	
+	<dt>Research Intern -- April 2023/July 2023 -- Servier International Research Institute</dt>
+	<dd>
+		<p>With the help of Antoine Bichat (Senior Data Scientist), I developped a pipeline comparing several statistical analysis methods, in order to identify biomarkers of response to a treatment.</p>
+	</dd>
+</dl>
 
 <ul class="actions fit">
 	<li><span class="button special fit">Education</span></li>
 </ul>
 
-Université Paris-Sacalay -- 2024/2025 -- Master in applied Mathematics
+<dl>
+	<dt>Université Paris-Sacalay -- 2024/2025 -- Master in applied Mathematics</dt>
 
-Agroparistech -- 2019/2025 -- Ingeneer in life sciences
+	<dt>Agroparistech -- 2019/2025 -- Ingeneer in life sciences</dt>
 
-Lycée Lakanal, Sceaux -- 2019/2021 -- BCPST
-
-Biology, Chemistry, Physics, Geology
-
+	<dt>Lycée Lakanal, Sceaux -- 2019/2021 -- BCPST</dt>
+	<dd>
+		<p>Biology, Chemistry, Physics, Geology</p>
+	</dd>
+</dl>
   </div>
 </section>
