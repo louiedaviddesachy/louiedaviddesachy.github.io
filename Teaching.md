@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Curiculum
+title: Teaching
 image: 
 nav-menu: true
 ---
