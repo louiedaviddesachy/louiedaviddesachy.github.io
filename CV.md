@@ -48,5 +48,6 @@ nav-menu: true
 		<p>Biology, Chemistry, Physics, Geology</p>
 	</dd>
 </dl>
-  </div>
+
+</div>
 </section>
