@@ -2,7 +2,8 @@
 title: Louie-David Desachy
 subtitle: Phd Student in Applied Mathematics
 email: louie-david[dot]desachy[at]inria.fr
-description: A responsive site template designed by HTML5 Up<br /> and released under the Creative Commons.
+description: PhD student in Applied Mathematics for Medical Imaging at Inria and Université Paris Cité, I work on the development of generative approaches for modeling longitudinal trajectories and detecting anomalies in medical imaging data.
+My goal is to gain a deeper understanding of how pathologies evolve over time by combining advanced geometrical and statistical tools to support more precise and personalized diagnostics in healthcare .
 baseurl:  # the subpath of your site, e.g. /blog
 url: "louiedaviddesachy.github.io"# the base hostname & protocol for your site
 
