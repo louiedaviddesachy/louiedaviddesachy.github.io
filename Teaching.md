@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Teaching
-image: 
+image: assets/images/image_tableau_noir.png
 nav-menu: true
 ---
 
