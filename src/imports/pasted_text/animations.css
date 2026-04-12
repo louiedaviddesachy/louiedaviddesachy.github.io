@@ -1,0 +1,64 @@
+Je souhaite enrichir la page d'accueil du site de Louie-David Desachy (doctorant en Mathématiques Appliquées, Inria / Université Paris Cité) avec des animations et effets visuels modernes, équilibrés entre impact visuel et performance. Le style général reste sobre et professionnel — aucun effet ne doit jamais prendre le dessus sur le contenu. Toutes les animations respectent prefers-reduced-motion. Le site est en Jekyll / GitHub Pages, dark mode #242943 par défaut avec bascule light mode.
+
+1. PRÉLOADER — ÉCRAN D'ENTRÉE
+Avant l'affichage du site, un écran de chargement occupe toute la fenêtre sur fond #242943. Au centre, le symbole π apparaît en #ffffff, dessiné progressivement par une animation SVG stroke-dashoffset (le tracé du symbole se dessine lui-même en ~0.8s). Une fois le tracé terminé, le π se transforme en douceur : il se déforme légèrement, ses jambes s'arrondissent en une suggestion de cerveau (morphing SVG, ~0.5s), puis l'ensemble fait un léger zoom-out et fade-out simultané (~0.3s), révélant le site en dessous. Durée totale du préloader : 1.6s maximum. Si le site est déjà en cache, le préloader est ignoré (flag sessionStorage).
+
+2. BARRE DE PROGRESSION DU SCROLL
+Une fine barre horizontale de 2px d'épaisseur, positionnée en haut de page, sous la navbar fixe. Elle se remplit de gauche à droite en #f76f91 (accent rose) au fur et à mesure que l'utilisateur scrolle vers le bas. En light mode, la barre de fond (partie non remplie) est #e5e7eb. En dark mode, rgba(255,255,255,0.08). La barre est implémentée via un <div> de largeur calculée en JavaScript (scrollY / (documentHeight - windowHeight) * 100), sans librairie externe. Transition width fluide avec transition: width 0.05s linear.
+
+3. HERO — FOND ANIMÉ GÉOMÉTRIQUE
+Le hero (bloc 1, présentation personnelle) a un fond animé subtil qui évoque l'univers mathématique sans utiliser l'image Escher. L'animation est un champ de particules géométriques légères généré en Canvas 2D :
+
+Les particules sont de minuscules symboles π et de petits cercles (représentant des neurones), alternés aléatoirement, dessinés en rgba(255,255,255,0.04) sur fond #242943 (dark) ou rgba(26,26,46,0.04) sur fond blanc (light).
+Chaque particule dérive lentement dans une direction aléatoire à vitesse très faible (0.2 à 0.5px par frame), rebondit sur les bords du canvas.
+Les particules proches (distance < 80px) sont reliées par une ligne très fine rgba(247,111,145,0.06) (rose très transparent), évoquant un réseau neuronal.
+Le canvas est en position: absolute, z-index: 0, derrière le contenu du hero. Le contenu texte et photo sont en z-index: 1.
+Performance : maximum 60 particules, requestAnimationFrame, pause automatique si l'onglet est inactif (visibilitychange).
+
+
+4. PARALLAXE AU SCROLL — HERO
+Lors du scroll depuis le hero, deux éléments bougent à vitesses différentes pour créer une profondeur :
+
+La photo de profil se translate verticalement vers le haut à 0.3× la vitesse de scroll (transform: translateY(scrollY * 0.3)).
+Le canvas de particules se translate vers le haut à 0.15× la vitesse de scroll, plus lent que le contenu, donnant une impression de profondeur.
+Le texte du hero (nom, titre, bio) se translate vers le haut à 0.5× la vitesse de scroll, légèrement plus rapide que la photo.
+Ces trois vitesses différentes (0.15 / 0.3 / 0.5) créent une sensation de parallaxe naturelle à trois couches sans être vertigineuse.
+Implémenté via transform: translateY() uniquement (pas de top ou margin) pour rester sur le compositor thread et ne pas déclencher de reflow.
+
+
+5. RÉVÉLATION AU SCROLL — TOUS LES BLOCS
+Chaque section de la page (bloc 2 tuiles, bloc 3 blog+contact) entre dans le viewport avec une animation de révélation déclenchée par IntersectionObserver (threshold: 0.15) :
+
+Tuiles (Teaching / Publications / Curriculum / Projects) : Chaque tuile apparaît séquentiellement avec un décalage de 80ms entre chacune (animation-delay: 0ms, 80ms, 160ms, 240ms). Chaque tuile part de opacity: 0, translateY: 24px et arrive à opacity: 1, translateY: 0 en 400ms ease-out. L'image Escher en fond des tuiles fait un léger zoom-in de scale(1.05) à scale(1.0) simultanément, donnant l'impression que la tuile "se pose".
+Articles du blog : Chaque article entre depuis la gauche (translateX: -20px, opacity: 0) avec un stagger de 60ms, en 350ms ease-out.
+Bloc contact : Apparaît depuis la droite (translateX: 20px, opacity: 0) en 400ms ease-out, légèrement décalé par rapport aux articles pour un effet de composition.
+Règle générale : Une fois qu'un élément est révélé, son état est figé (pas de re-animation au scroll inverse). La classe .revealed est ajoutée définitivement via IntersectionObserver avec { once: true }.
+
+
+6. INTERACTIONS SUR LES TUILES — HOVER ENRICHI
+Les quatre tuiles (Teaching, Publications, Curriculum, Projects) ont un hover en plusieurs couches :
+
+L'image Escher en fond fait un zoom lent de scale(1.0) à scale(1.08) en 600ms ease (l'overflow est caché par overflow: hidden sur la tuile).
+La bordure passe progressivement à #f76f91 en 200ms.
+L'icône Font Awesome se colore en #f76f91 et effectue une légère rotation de 0deg à 5deg en 300ms ease.
+Le titre monte de translateY: 0 à translateY: -3px en 200ms.
+Un reflet lumineux (pseudo-élément ::after avec gradient blanc à 0% → 8% → 0% d'opacité) balaie la tuile de gauche à droite en 500ms au moment du hover, comme un éclat de lumière.
+
+
+7. NAVBAR — COMPORTEMENT AU SCROLL
+La navbar fixe adopte un comportement intelligent :
+
+Au-dessus du hero : fond entièrement transparent, texte blanc, pas d'ombre.
+Dès que l'utilisateur scrolle de plus de 60px : transition douce (300ms ease) vers fond #242943 (dark) / #ffffff (light) avec une fine ombre basse box-shadow: 0 1px 12px rgba(0,0,0,0.08).
+Si l'utilisateur scrolle vers le haut (remonte) : la navbar réapparaît immédiatement avec un translateY de -100% à 0 en 250ms.
+Si l'utilisateur scrolle vers le bas rapidement (vitesse > 5px/frame) : la navbar se masque par un translateY: -100% en 300ms, libérant de l'espace pour la lecture.
+
+
+EXIGENCES TECHNIQUES GLOBALES
+
+Toutes les animations utilisent exclusivement transform et opacity — jamais top, left, width, height animés (pour rester sur le compositor thread et éviter les reflows).
+Chaque animation est enveloppée dans @media (prefers-reduced-motion: reduce) { * { animation: none; transition: none; } }.
+Le Canvas de particules est pausé automatiquement si l'onglet perd le focus (document.addEventListener('visibilitychange', ...)).
+Aucune librairie d'animation externe (pas de GSAP, Anime.js, Three.js) — uniquement CSS transitions, CSS @keyframes, Canvas 2D natif, et IntersectionObserver. Cela garantit la compatibilité Jekyll/GitHub Pages sans étape de build.
+Lighthouse Performance score cible : ≥ 90 sur mobile.
+L'IA est invitée à proposer des améliorations supplémentaires qu'elle juge pertinentes après avoir implémenté ces fonctionnalités, sous forme d'une liste priorisée avec niveau de complexité (Facile / Moyen / Avancé).

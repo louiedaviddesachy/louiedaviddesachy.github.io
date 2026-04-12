@@ -1,0 +1,114 @@
+/* Animation styles for scroll reveal and enhanced interactions */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Scroll reveal animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Tile hover shine effect */
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.tile-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.tile-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tile-shine:hover::after {
+  animation: shine 500ms ease-out;
+}
+
+/* Icon rotation on hover */
+.tile-icon-rotate {
+  transition: transform 300ms ease, color 200ms ease;
+}
+
+.tile-icon-rotate:hover {
+  transform: rotate(5deg);
+}
+
+/* Title lift on hover */
+.tile-title-lift {
+  transition: transform 200ms ease, color 200ms ease;
+}
+
+.tile-title-lift:hover {
+  transform: translateY(-3px);
+}
+
+/* Smooth zoom for images */
+.image-zoom {
+  transition: transform 600ms ease;
+}
+
+.image-zoom:hover {
+  transform: scale(1.08);
+}
