@@ -9,7 +9,7 @@ import { BackgroundSelector, BackgroundRenderer, BackgroundType } from '../compo
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { SEO } from '../components/SEO';
 // Import image depuis public/ pour le build de production
-const profilePhoto = "/profile-photo.svg";
+const profilePhoto = "/photo_profile.png";
 
 const categoryColors = {
   Conference: '#9bf1ff',
