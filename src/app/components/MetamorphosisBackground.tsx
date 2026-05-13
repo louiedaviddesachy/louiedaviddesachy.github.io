@@ -1,5 +1,5 @@
-// Image de fond géométrique pour le build de production
-const friezeImage = "/escher-pattern.svg";
+// Image de fond géométrique - motif de cubes style Escher depuis Unsplash
+const friezeImage = "https://images.unsplash.com/photo-1689773890385-4dc5aa100366?w=1920&q=80";
 
 export function MetamorphosisBackground() {
   return (
