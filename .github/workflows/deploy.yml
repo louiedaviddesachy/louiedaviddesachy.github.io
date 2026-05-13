@@ -3,14 +3,18 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # Déclenché à chaque push sur la branche main
+
+  # Permet de lancer manuellement le workflow depuis l'onglet Actions
   workflow_dispatch:
 
+# Permissions nécessaires pour déployer sur GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Un seul déploiement à la fois
 concurrency:
   group: "pages"
   cancel-in-progress: false
