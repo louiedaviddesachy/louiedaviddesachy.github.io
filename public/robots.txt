@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://louiedaviddesachy.github.io/sitemap.xml
